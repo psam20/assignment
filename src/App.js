@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Switch,Route,useRouteMatch} from 'react-router-dom';
+import HomePageContainer from './Containers/HomePageContainer';
+import ApplicationInfoContainer from './Containers/applicationInfoContainer'
+import VideoResponse from './Components/videoResponse';
 import './App.css';
 
-function App() {
+
+function App(props) {
+    const {url}= useRouteMatch();
+   console.log(url)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+         
+     
+        <Switch>
+          <Route  path="/" exact component={()=>(<HomePageContainer/>)}/>
+          <Route path="/:id" exact component={ApplicationInfoContainer}/>
+          <Route path="/:id/:id"  component={()=>(<VideoResponse videos={props.applications} />) }/>
+        </Switch>
+
+      
+      
     </div>
   );
 }
+
 
 export default App;
