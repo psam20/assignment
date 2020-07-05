@@ -1,18 +1,60 @@
 import React from 'react';
-import {useParams} from 'react-router-dom';
+import {useParams,useRouteMatch} from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import './VideoPlayer.css';
 const VideoResponse = (props)=>{
+    const {url}=useRouteMatch();
+   const candidateId=url.split('/');
+  
     const {id} = useParams();
-    console.log(id);
+    // Find Questions Selected By the User
+     const question=props.questions.find(c=> c.id.toString()===id)
+    
+   const cId=candidateId[1];
+    // Candidate which is CLicked BY the User
+     const selectedCandidate= props.candidate.find(c=> c.id.toString()===cId);
    
+//    Video Sort By Application Id
+       const selectedApplication= props.videos.find(c => c.id.toString()===selectedCandidate.applicationId.toString());
+       console.log(selectedApplication);
+// Video Sort By questionId
+    const selectedQuetionVideo=selectedApplication.videos.find(c=>c.questionId.toString()=== id.toString())
+    console.log(selectedQuetionVideo);
 
-    const selectedVideo=props.videos.map( v => v.videos.find( v1=> v1.questionId.toString()===id))
-    console.log(selectedVideo);
-     console.log(props.videos);
-    return (<div>
+  
+     
+    return (
+    
+    <div>
 
-        <h1>Video Container</h1>
+  
+    <h1 className="h1">
+     Candidate Name :- {selectedCandidate.name}
+    </h1>
+    <h1 className="h1">{
+                question.question
+    }</h1>
 
-    </div>)
+    {
+         selectedQuetionVideo?
+         <div style={{textAlign:"center"}}>
+         <div className='player-wrapper'>
+            
+               
+          <ReactPlayer
+            className='react-player'
+            url={`${selectedQuetionVideo.src}`}
+            width='50%'
+            
+            controls
+          />
+        </div>
+        </div> 
+        :<p className="p">Candidate Has Not Uploaded the Video for This Question</p>}
+
+    </div>
+    
+    )
 }
 
 export default VideoResponse;

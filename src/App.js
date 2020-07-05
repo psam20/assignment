@@ -16,7 +16,7 @@ function App(props) {
         <Switch>
           <Route  path="/" exact component={()=>(<HomePageContainer/>)}/>
           <Route path="/:id" exact component={ApplicationInfoContainer}/>
-          <Route path="/:id/:id"  component={()=>(<VideoResponse videos={props.applications} />) }/>
+          <Route path="/:id/:id"  component={()=>(<VideoResponse videos={props.applications} candidate={props.candidate} questions={props.questions} />) }/>
         </Switch>
 
       
