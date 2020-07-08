@@ -51,8 +51,8 @@ const VideoResponse = (props)=>{
         </div> 
         :<p className="p">Candidate Has Not Uploaded the Video for This Question</p>}
 
-           <Comment appId={selectedCandidate.applicationId} quesId={id} videos={selectedApplication.videos}/>
-
+        {selectedQuetionVideo?<Comment appId={selectedCandidate.applicationId} quesId={id} videos={selectedApplication.videos}/>
+:""} 
     </div>
     
     )
