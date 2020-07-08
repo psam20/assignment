@@ -1,4 +1,5 @@
 import {Constants as c} from '../Constants/constant';
+import axios from 'axios';
 export const fetchApplicationBegin = ()=> ({
     type: c.FETCH_APPLICATIONS_BEGIN
 });
@@ -11,6 +12,11 @@ export const fetchApplicationSuccess =  (data) => ({
 export const fetchApplicationFailure =( error) => ({
     type:c.FETCH_APPLICATIONS_FAILURE,
     payload:error,
+})
+
+export const addComments=(data)=>({
+   type:c.ADD_COMMENT,
+   payload:data
 })
 
 // This is a Combined fetchApplications Actions for Begin , success and Failure
@@ -29,5 +35,16 @@ export const fetchApplications= ()=>{
                    dispatch(fetchApplicationFailure());
               };
               
+    }
+}
+export const putApplicationComment=(appId,quesId,data)=>{
+    return async (dispatch)=>{
+        try{
+            axios.put(`http://localhost:3010/applications/${appId}`,data)
+        
+         }
+        catch(err){
+            console.log(err)
+        }
     }
 }

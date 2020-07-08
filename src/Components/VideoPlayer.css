@@ -1,11 +1,29 @@
 .player-wrapper {
-  margin-left: 20%;
+  
   position: relative;
-  padding-top: 56.25% /* Player ratio: 100 / (1280 / 720) */
+  width: 50%;
+  height: auto;
+  margin-left: 25%;
+  margin-bottom: 20px;
+
 }
- 
-.react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
+ .react-player{
+   max-width: 100%;
+   height: auto;
+ }
+
+ @media only screen and (max-width: 800px) {
+  .player-wrapper{
+   height: auto;
+   margin-left: 25%;
+   width: 50%;
+   position: relative;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .player-wrapper{
+   width: 100%;
+   margin: 0%;
+  margin-bottom: 20px;
+  }
 }

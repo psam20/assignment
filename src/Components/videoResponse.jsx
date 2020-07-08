@@ -1,6 +1,7 @@
 import React from 'react';
 import {useParams,useRouteMatch} from 'react-router-dom';
 import ReactPlayer from 'react-player';
+import Comment from './comments';
 import './VideoPlayer.css';
 const VideoResponse = (props)=>{
     const {url}=useRouteMatch();
@@ -44,13 +45,13 @@ const VideoResponse = (props)=>{
           <ReactPlayer
             className='react-player'
             url={`${selectedQuetionVideo.src}`}
-            width='50%'
-            
-            controls
+             controls
           />
         </div>
         </div> 
         :<p className="p">Candidate Has Not Uploaded the Video for This Question</p>}
+
+           <Comment appId={selectedCandidate.applicationId} quesId={id} videos={selectedApplication.videos}/>
 
     </div>
     

@@ -26,6 +26,7 @@ const ApplicationsReducer = (state=INITIAL_STATE,action)=>{
                 ...state,
                 hasErrors:true
             } 
+          
     
         default:
             return state
